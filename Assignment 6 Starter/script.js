@@ -75,3 +75,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     return score;
   }
+
+  // Display saved scores
+  function displayScores() {
+    const scores = JSON.parse(localStorage.getItem("triviaScores")) || [];
+    scoreTableBody.innerHTML = "";
+    scores.forEach((entry) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${entry.name}</td><td>${entry.score}</td>`;
+      scoreTableBody.appendChild(row);
+    });
+  }
+
+  // Handle form submit (end game)
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = usernameInput.value.trim();
+    if (!name) return alert("Please enter your name before submitting!");
+    const score = calculateScore();
+    saveScore(name, score);
+    alert(`Well done, ${name}! Your score is ${score}/10`);
+    newPlayerButton.classList.remove("hidden");
+  });
