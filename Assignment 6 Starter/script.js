@@ -49,3 +49,29 @@ document.addEventListener("DOMContentLoaded", () => {
       questionContainer.appendChild(questionDiv);
     });
   }
+
+  // Create radio options for each question
+  function createAnswerOptions(correct, incorrects, index) {
+    const allAnswers = [correct, ...incorrects].sort(() => Math.random() - 0.5);
+    return allAnswers
+      .map(
+        (a) => `
+        <label>
+          <input type="radio" name="answer${index}" value="${a}" ${
+          a === correct ? 'data-correct="true"' : ""
+        }>
+          ${a}
+        </label><br>`
+      )
+      .join("");
+  }
+
+  // Calculate and display score
+  function calculateScore() {
+    let score = 0;
+    const answers = document.querySelectorAll("input[type='radio']:checked");
+    answers.forEach((ans) => {
+      if (ans.dataset.correct === "true") score++;
+    });
+    return score;
+  }
