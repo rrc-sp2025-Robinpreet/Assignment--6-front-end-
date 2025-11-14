@@ -1,78 +1,173 @@
+/* ---------- Page Background + Title ---------- */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-}
-
-#game-container {
-  margin-top: 50px;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  width: 600px;
+  background: linear-gradient(135deg, #301543, #202a3c, #121c2c);
+  color: white;
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
+/* Colorful Title */
+title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #fffae6;
+  width: 100%;
+}
+
+/* ---------- Main Game Container ---------- */
+#game-container {
+  width: 80%;
+  max-width: 850px;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  margin: 30px auto;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black; /* Make text black inside */
+  border: 2px solid #e8e8e8;
+}
+
+/* Header inside container */
 h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+/* ---------- Skeleton Loader ---------- */
+#loading-container {
   margin-bottom: 20px;
 }
 
+.skeleton {
+  height: 22px;
+  background: #ddd;
+  margin: 10px 0;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: loading 1.4s infinite;
+}
+
+@keyframes loading {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ---------- Question Section ---------- */
+#question-container p {
+  font-size: 20px;
+  margin-top: 25px;
+  font-weight: bold;
+  color: #222;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+  padding: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 8px;
+  background: #f2f2f2;
+  transition: 0.2s ease;
+}
+
+label:hover {
+  background: #e6eaff;
+}
+
+/* Radio button spacing */
+input[type="radio"] {
+  margin-right: 12px;
+}
+
+/* Username Input */
+#username {
+  width: 100%;
+  padding: 14px;
+  margin-top: 25px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  padding: 12px 24px;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  margin-top: 18px;
+  transition: 0.25s ease;
+}
+
+/* Submit Button */
+#submit-game {
+  background: #7d7abb;
+  color: white;
+  box-shadow: 0px 3px 10px rgba(79, 70, 229, 0.4);
+}
+#submit-game:hover {
+  background: #372fbd;
+}
+
+/* New Player Button */
+#new-player {
+  background: #10b981;
+  color: white;
+  box-shadow: 0px 3px 10px rgba(16, 185, 129, 0.4);
+}
+#new-player:hover {
+  background: #0b8a63;
+}
+
+/* ---------- Score Table ---------- */
+#score-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#score-table th {
+  background: #4f46e5;
+  color: white;
+  padding: 14px;
+  font-size: 17px;
+}
+
+#score-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 16px;
+}
+
+/* Hide elements */
 .hidden {
   display: none;
-}
-
-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-input[type="text"] {
-  width: 80%;
-  padding: 10px;
-  margin-top: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-#score-table {
-  margin-top: 25px;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-#score-table th, #score-table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-.skeleton {
-  height: 20px;
-  background-color: #ddd;
-  margin: 10px 0;
-  border-radius: 4px;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: 200px 0;
-  }
 }
