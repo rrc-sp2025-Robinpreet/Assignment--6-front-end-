@@ -97,3 +97,15 @@ document.addEventListener("DOMContentLoaded", () => {
     alert(`Well done, ${name}! Your score is ${score}/10`);
     newPlayerButton.classList.remove("hidden");
   });
+
+  // Handle new player button
+  newPlayerButton.addEventListener("click", () => {
+    usernameInput.value = "";
+    questionContainer.innerHTML = "";
+    newPlayerButton.classList.add("hidden");
+    displayQuestions();
+  });
+
+  // Show existing scores on load
+  displayScores();
+});
